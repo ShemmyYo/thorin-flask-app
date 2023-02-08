@@ -1,7 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
     
-{{ list_of_numbers }}
+{% for member in company %}
+    {% if loop.index % 2 != 0 %}
+        <div class="row feeturette">
+            <div class="col-md-7">
+                <h3>{{ member.name }}</h3>
+                <p>
+                    {{ member.description }}
+                </p>
+            </div>
+            <div class="col-md-5"><img src={{ member.image_source }} alt="Picture of "{{ member.name }}></div>
+        </div>
+        <br>
+    {% else %} 
+        <div class="row feeturette">
+            <div class="col-md-5"><img src={{ member.image_source }} alt="Picture of "{{ member.name }}></div>
+            <div class="col-md-7">
+                <h3>{{ member.name }}</h3>
+                <p>
+                    {{ member.description }}
+                </p>
+            </div>
+        </div>
+        <br>
+    {% endif %}
+{% endfor %}
+
+<!-- Below is for before itterating throug for loop
 
 <h2>{{ page_title }}</h2>
 <p>
@@ -77,7 +103,7 @@
             nakedest dragonet new from the shell".
         </p>
     </div>
-</div>
+</div> -->
 
 {% endblock %}
 
